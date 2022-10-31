@@ -1,10 +1,12 @@
+#include "smart_pointer.h"
+
 #include <memory>
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, char** argv) {
-    std::cout << "hello talk-cpp" << std::endl;
+void SmartPtr::TestSmartPtr() {
+    std::cout << "smart ptr" << std::endl;
 
     shared_ptr<int> sp = make_shared<int>(100);
     std::cout << "sp use count: " << sp.use_count() << std::endl;
@@ -19,6 +21,4 @@ int main(int argc, char** argv) {
         std::cout << "swp value: " << *swp << std::endl;
     }
     std::cout << "sp value: " << *sp << std::endl;
-
-    return 0;
 }
