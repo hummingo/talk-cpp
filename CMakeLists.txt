@@ -21,9 +21,11 @@ set(dst_dir_name)
 GET_SUBDIRECTORY_NAME("${src_dir_name}" dst_dir_name)
 
 foreach(item ${dst_dir_name})
-    file(GLOB item_source "${src_dir_name}/${item}/*.cpp")
-    list(APPEND all_source_file "${item_source}")
     include_directories("${src_dir_name}/${item}")
+    file(GLOB source_items "${src_dir_name}/${item}/*.h"
+                          "${src_dir_name}/${item}/*.cpp")
+    list(APPEND all_source_file "${source_items}")
+    source_group("${item}" FILES "${source_items}")
 endforeach()
 
 add_executable("${PROJECT_NAME}" "${all_source_file}"
