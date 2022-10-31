@@ -1,0 +1,9 @@
+# don't ignore .gitignore file
+!.gitignore
+
+# ignore .cache directory of clangd
+/.cache/
+
+# ignore build directory of root
+/build/
+
