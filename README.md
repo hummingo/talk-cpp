@@ -18,7 +18,7 @@ You can creat issue to open a new question.
 2. mkdir build
 3. cd build
 4. cmake -G "Visual Studio 16 2019" -A x64 ..
-5. make --build . --config Debug -v
+5. cmake --build . --config Debug -v
 6. open talk-cpp.sln
 
 #### linux + gcc/g++
