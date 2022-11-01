@@ -13,13 +13,15 @@ This Repository about study and communication cpp.
 You can creat issue to open a new question.
 
 ### build project
-#### windows + visual studio 2019 **according to visual studio version config**
+#### windows + visual studio 2019 
+**according to visual studio version config**
 1. git clone https://github.com/hummingo/talk-cpp.git
 2. mkdir build
 3. cd build
 4. cmake -G "Visual Studio 16 2019" -A x64 ..
 5. cmake --build . --config Debug -v
 6. open talk-cpp.sln
+7. set talk-cpp as startup project
 
 #### linux + gcc/g++
 1. git clone https://github.com/hummingo/talk-cpp.git
