@@ -3,6 +3,7 @@
 #include "sample.h"
 #include "smart_pointer.h"
 #include "lambda.h"
+#include "sample_gl.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ int main(int argc, char** argv) {
 
     // Sample::TestSample();
     // SmartPtr::TestSmartPtr();
-    Lambda::TestLambda();
+    // Lambda::TestLambda();
+    SampleGL::TestSampleGL();
 
     return 0;
 }

@@ -29,3 +29,11 @@ You can creat issue to open a new question.
 3. cd build
 4. cmake ..
 5. make
+
+### opengl
+You can select use opengl library with USE_OPENGL of CMakeLists.txt 
+Defualt USE_OPENGL is Off
+add -DUSE_OPENGL=ON open switch to use OpenGL library
+- In Windows Platfrom
+1. cmake -G "Visual Studio 16 2019" -DUSE_OPENGL=ON -A x64 ..
+- Linux/GUN hasn't OpenGL library
