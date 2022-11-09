@@ -9,22 +9,29 @@ set(CMAKE_CXX_STANDARD 11)
 option(USE_OPENGL "Whether Use OpenGL Library" ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
 include(utils)
 
+set(cpp_dir_name "${CMAKE_CURRENT_SOURCE_DIR}/src/cpp")
+set(gl_dir_name "${CMAKE_CURRENT_SOURCE_DIR}/src/gl")
+set(all_dst_dir)
+GET_SUBDIRECTORY_NAME("${cpp_dir_name}" cpp_dst_dir)
+if(USE_OPENGL)
+    GET_SUBDIRECTORY_NAME("${gl_dir_name}" gl_dst_dir)
+endif()
+list(APPEND all_dst_dir ${cpp_dst_dir} ${gl_dst_dir})
+
 set(all_source_file "")
-set(src_dir_name "${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(dst_dir_name)
-GET_SUBDIRECTORY_NAME("${src_dir_name}" dst_dir_name)
-foreach(item ${dst_dir_name})
-    include_directories("${src_dir_name}/${item}")
+foreach(item ${all_dst_dir})
+    include_directories("${item}")
     file(GLOB_RECURSE item_files
         RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-        ${src_dir_name}/${item}/*.h
-        ${src_dir_name}/${item}/*.cpp)
+        ${item}/*.h
+        ${item}/*.cpp)
     list(APPEND all_source_file "${item_files}")
     if(MSVC)
-        source_group(${item} FILES ${item_files})
-        # source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${item_files})
+        # source_group(${item} FILES ${item_files})
+        source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${item_files})
     endif()
 endforeach()
 
@@ -45,4 +52,5 @@ if(OpenGL_FOUND)
                                PUBLIC "${OpenGL_LIBRARY_DIR}")
     target_link_libraries("${PROJECT_NAME}"
                                "${OpenGL_LIBRARY}")
+message(STATUS "${all_dst_dir}")
 endif()
